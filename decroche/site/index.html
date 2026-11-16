@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Décroche – Réceptionniste IA</title>
+<meta name="description" content="Décroche répond à vos appels quand vous êtes sur un chantier, prend la demande et vous l'envoie par SMS. Pour artisans et TPE.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbfaf7; --surface:#ffffff; --ink:#16181d; --muted:#5b616e; --line:#e6e3dc;
+  --brand:#0f6b4f; --brand-ink:#ffffff; --accent:#f2b630; --soft:#eaf4ef;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#101312; --surface:#171b1a; --ink:#eef1ef; --muted:#a3aba7; --line:#2a302e;
+    --brand:#3ccf98; --brand-ink:#0b1210; --accent:#f2b630; --soft:#18261f;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101312; --surface:#171b1a; --ink:#eef1ef; --muted:#a3aba7; --line:#2a302e;
+  --brand:#3ccf98; --brand-ink:#0b1210; --accent:#f2b630; --soft:#18261f;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.55}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+.logo{font-weight:800;font-size:1.3rem;letter-spacing:-.02em}
+.logo span{color:var(--brand)}
+.btn{display:inline-block;background:var(--brand);color:var(--brand-ink);text-decoration:none;font-weight:700;padding:14px 22px;border-radius:12px}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.hero{padding:48px 0 56px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+h1{font-size:clamp(2rem,5vw,3.3rem);line-height:1.08;letter-spacing:-.03em;margin:0 0 18px}
+h1 em{font-style:normal;color:var(--brand)}
+.lead{font-size:1.15rem;color:var(--muted);margin:0 0 28px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.sms{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 10px 30px rgba(0,0,0,.06)}
+.sms small{color:var(--muted);font-size:.8rem}
+.bubble{background:var(--soft);border-radius:14px;padding:14px 16px;margin-top:10px;font-size:.95rem}
+.bubble b{display:block;margin-bottom:4px}
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(1.5rem,3.5vw,2.1rem);letter-spacing:-.02em;margin:0 0 28px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px}
+.card h3{margin:0 0 8px;font-size:1.05rem}
+.card p{margin:0;color:var(--muted)}
+.num{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--brand);color:var(--brand-ink);font-weight:800;margin-bottom:12px}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+.calc label{display:block;font-weight:500;margin:14px 0 6px}
+.calc input{width:100%;accent-color:var(--brand)}
+.out{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px;text-align:center}
+.out .big{font-size:2.6rem;font-weight:800;color:var(--brand);letter-spacing:-.03em}
+.price{position:relative}
+.price.best{border:2px solid var(--brand)}
+.tag{position:absolute;top:-12px;left:20px;background:var(--accent);color:#1b1500;font-size:.75rem;font-weight:800;padding:3px 10px;border-radius:99px}
+.amount{font-size:2rem;font-weight:800;margin:6px 0}
+.amount small{font-size:.95rem;color:var(--muted);font-weight:500}
+.price ul{padding-left:18px;color:var(--muted);margin:12px 0 0}
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:10px}
+summary{font-weight:700;cursor:pointer}
+details p{color:var(--muted);margin:10px 0 0}
+.final{text-align:center}
+footer{padding:28px 0;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+@media (max-width:760px){
+  .hero,.calc{grid-template-columns:1fr}
+  .grid3{grid-template-columns:1fr}
+  .hero{padding-top:24px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">Décroche<span>.</span></div>
+    <a class="btn ghost" href="#demo">Écouter la démo</a>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1>Sur le chantier, vous ne décrochez pas.<br><em>Léa, si.</em></h1>
+      <p class="lead">Votre réceptionniste vocale IA répond à chaque appel, 24h/24, au nom de votre entreprise. Elle prend le nom, l'adresse et le problème, puis vous envoie tout par SMS en moins d'une minute.</p>
+      <div class="ctas">
+        <a class="btn" id="demo" href="https://elevenlabs.io/app/talk-to?agent_id=agent_3101m7j2g8rseyb9q99xm3mk3zgf" target="_blank" rel="noopener">📞 Parler à Léa maintenant</a>
+        <a class="btn ghost" href="#prix">Voir les prix</a>
+      </div>
+      <p style="color:var(--muted);font-size:.85rem;margin-top:14px">Démo : faites comme si vous aviez une fuite chez « Durand Plomberie » (entreprise fictive).</p>
+    </div>
+    <div class="sms" aria-label="Exemple de SMS reçu">
+      <small>SMS reçu · il y a 1 min</small>
+      <div class="bubble"><b>📞 Nouvel appel, 18h42</b>Mme Martin · 06 12 34 56 78<br>14 rue des Lilas, Villeurbanne<br>Fuite sous l'évier, eau coupée.<br>Souhaite un passage demain matin.<br><b style="margin-top:6px;color:var(--brand)">Urgence : moyenne</b></div>
+    </div>
+  </div>
+
+  <section>
+    <h2>En place en 48 heures. Sans changer de numéro.</h2>
+    <div class="grid3">
+      <div class="card"><div class="num">1</div><h3>On apprend votre métier</h3><p>15 minutes au téléphone : vos services, vos tarifs, votre zone, vos horaires.</p></div>
+      <div class="card"><div class="num">2</div><h3>On configure Léa</h3><p>Elle parle comme votre secrétaire, connaît vos prix et repère les urgences.</p></div>
+      <div class="card"><div class="num">3</div><h3>Vous activez le renvoi</h3><p>Un code à taper sur votre portable. Si vous ne décrochez pas, Léa prend le relais.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Combien vous coûtent vos appels manqués ?</h2>
+    <div class="calc">
+      <div>
+        <label for="missed">Appels manqués par semaine : <b id="mv">5</b></label>
+        <input id="missed" type="range" min="1" max="30" value="5">
+        <label for="ticket">Valeur moyenne d'un chantier : <b id="tv">400</b> €</label>
+        <input id="ticket" type="range" min="100" max="5000" step="50" value="400">
+        <label for="conv">Part des appels qui deviennent un chantier : <b id="cv">30</b> %</label>
+        <input id="conv" type="range" min="5" max="80" value="30">
+      </div>
+      <div class="out">
+        <div style="color:var(--muted)">Chiffre d'affaires perdu chaque mois</div>
+        <div class="big" id="lost">2 580 €</div>
+        <div style="color:var(--muted);font-size:.9rem">Décroche Pro : 290 €/mois</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="prix">
+    <h2>Des prix simples. Sans engagement.</h2>
+    <div class="grid3">
+      <div class="card price"><h3>Essentiel</h3><div class="amount">149 € <small>/mois</small></div><p>Installation 290 €</p>
+        <ul><li>Répond quand vous ne décrochez pas</li><li>Résumé SMS + e-mail</li><li>300 minutes incluses</li></ul></div>
+      <div class="card price best"><span class="tag">Le plus choisi</span><h3>Pro</h3><div class="amount">290 € <small>/mois</small></div><p>Installation 490 €</p>
+        <ul><li>Répond 24h/24, 7j/7</li><li>Prise de RDV dans votre agenda</li><li>Tarifs et FAQ personnalisés</li><li>800 minutes incluses</li></ul></div>
+      <div class="card price"><h3>Multi-sites</h3><div class="amount">Sur devis</div><p>Agences, cabinets, réseaux</p>
+        <ul><li>Plusieurs numéros et équipes</li><li>Routage des appels</li><li>Connexion CRM</li></ul></div>
+    </div>
+    <p style="margin-top:18px;color:var(--muted)"><b style="color:var(--ink)">Garantie premier mois :</b> si Léa ne vous apporte aucun nouveau chantier le premier mois, on vous rembourse l'abonnement.</p>
+  </section>
+
+  <section>
+    <h2>Questions fréquentes</h2>
+    <details><summary>Mes clients vont-ils se rendre compte que c'est une IA ?</summary><p>La voix est naturelle. Si un client demande, Léa répond honnêtement qu'elle est l'assistante vocale de l'entreprise. En pratique, les gens préfèrent une réponse immédiate à une messagerie.</p></details>
+    <details><summary>Dois-je changer de numéro ?</summary><p>Non. Vous activez un renvoi d'appel « si pas de réponse » vers votre ligne Décroche. Vous pouvez le couper à tout moment.</p></details>
+    <details><summary>Et si c'est une vraie urgence ?</summary><p>Léa repère les urgences selon vos critères et peut vous transférer l'appel directement ou vous envoyer une alerte prioritaire.</p></details>
+    <details><summary>Mes données sont-elles protégées ?</summary><p>Les appels sont traités pour votre seul compte, avec un contrat de sous-traitance RGPD. Vous pouvez demander la suppression de vos données à tout moment.</p></details>
+  </section>
+
+  <section class="final">
+    <h2>Ne laissez plus un client appeler votre concurrent.</h2>
+    <a class="btn" href="mailto:contact@decroche.fr?subject=Je%20veux%20Décroche">Réserver mon installation</a>
+    <p style="color:var(--muted);margin-top:12px">Offre de lancement : installation offerte pour les 10 premiers clients.</p>
+  </section>
+</div>
+<footer><div class="wrap">© 2026 Décroche · Réceptionniste IA pour artisans et TPE</div></footer>
+<script>
+const $=id=>document.getElementById(id);
+function upd(){
+  const m=+$('missed').value,t=+$('ticket').value,c=+$('conv').value;
+  $('mv').textContent=m;$('tv').textContent=t.toLocaleString('fr-FR');$('cv').textContent=c;
+  $('lost').textContent=Math.round(m*4.3*t*c/100).toLocaleString('fr-FR')+' €';
+}
+['missed','ticket','conv'].forEach(i=>$(i).addEventListener('input',upd));upd();
+</script>
+</body>
+</html>
