@@ -1,5 +1,7 @@
 # Décroche
 
+> ⏸️ **En pause (16/11/2026)** : projet mis de côté au profit de [Fulgur](../fulgur/PLAN.md). Les fichiers et l'agent démo restent disponibles.
+
 Réceptionniste téléphonique IA pour artisans et TPE françaises.
 
 - `PLAN.md` : business plan, prix, objectif 100 k€/mois, plan d'action jusqu'au 31/12/2026

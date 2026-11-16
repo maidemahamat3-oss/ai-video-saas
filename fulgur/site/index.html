@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fulgur – Speed-to-lead IA</title>
+<meta name="description" content="Fulgur rappelle chaque nouveau lead en moins de 30 secondes avec une conseillère vocale IA, le qualifie et pose le rendez-vous.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f7fb; --surface:#ffffff; --ink:#0d0f1a; --muted:#5a5f73; --line:#e3e4ee;
+  --brand:#4b3df5; --brand-ink:#ffffff; --bolt:#ffcc00; --soft:#eeecff; --bad:#c2410c;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0a0b12; --surface:#131522; --ink:#eef0fa; --muted:#9da2b8; --line:#262a3d;
+    --brand:#8c82ff; --brand-ink:#0a0b12; --bolt:#ffd633; --soft:#1c1b33; --bad:#fb923c;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0a0b12; --surface:#131522; --ink:#eef0fa; --muted:#9da2b8; --line:#262a3d;
+  --brand:#8c82ff; --brand-ink:#0a0b12; --bolt:#ffd633; --soft:#1c1b33; --bad:#fb923c;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.55}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.4rem;letter-spacing:-.02em}
+.logo b{color:var(--bolt);-webkit-text-stroke:.5px var(--ink)}
+.btn{display:inline-block;background:var(--brand);color:var(--brand-ink);text-decoration:none;font-weight:700;padding:14px 22px;border-radius:12px}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+h1,h2{font-family:'Space Grotesk',sans-serif;letter-spacing:-.03em}
+.hero{padding:40px 0 60px;display:grid;grid-template-columns:1.15fr 1fr;gap:40px;align-items:center}
+h1{font-size:clamp(2.1rem,5.4vw,3.6rem);line-height:1.04;margin:0 0 18px}
+h1 em{font-style:normal;color:var(--brand)}
+.lead{font-size:1.15rem;color:var(--muted);margin:0 0 28px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.timeline{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 14px 40px rgba(20,20,60,.08)}
+.ev{display:grid;grid-template-columns:62px 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.ev:last-child{border-bottom:0}
+.ev time{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--brand)}
+.ev p{margin:0}
+.ev small{color:var(--muted)}
+section{padding:60px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(1.6rem,3.6vw,2.3rem);margin:0 0 28px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px}
+.card h3{margin:0 0 8px;font-size:1.05rem}
+.card p{margin:0;color:var(--muted)}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.vs .card h3{font-family:'Space Grotesk',sans-serif;font-size:1.2rem}
+.vs ul{margin:10px 0 0;padding-left:18px;color:var(--muted)}
+.vs .bad h3{color:var(--bad)}
+.vs .good{border:2px solid var(--brand)}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+.calc label{display:block;font-weight:500;margin:14px 0 6px}
+.calc input{width:100%;accent-color:var(--brand)}
+.out{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px;text-align:center}
+.big{font-family:'Space Grotesk',sans-serif;font-size:2.8rem;font-weight:700;color:var(--brand);letter-spacing:-.03em}
+.price{position:relative}
+.price.best{border:2px solid var(--brand)}
+.tag{position:absolute;top:-12px;left:20px;background:var(--bolt);color:#1a1400;font-size:.75rem;font-weight:800;padding:3px 10px;border-radius:99px}
+.amount{font-family:'Space Grotesk',sans-serif;font-size:1.9rem;font-weight:700;margin:6px 0}
+.amount small{font-size:.9rem;color:var(--muted);font-weight:500;font-family:Inter,sans-serif}
+.price ul{padding-left:18px;color:var(--muted);margin:12px 0 0}
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:10px}
+summary{font-weight:700;cursor:pointer}
+details p{color:var(--muted);margin:10px 0 0}
+.final{text-align:center}
+footer{padding:28px 0;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+@media (max-width:820px){
+  .hero,.calc,.vs{grid-template-columns:1fr}
+  .grid3,.grid4{grid-template-columns:1fr 1fr}
+}
+@media (max-width:520px){ .grid3,.grid4{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">Fulgur<b>⚡</b></div>
+    <a class="btn ghost" href="#pilote">Lancer un pilote</a>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1>Vos leads coûtent cher.<br><em>Rappelez-les en 30 secondes.</em></h1>
+      <p class="lead">Fulgur appelle chaque nouveau lead quelques secondes après sa demande, avec une conseillère vocale IA. Elle qualifie le projet, répond aux questions et pose le rendez-vous dans l'agenda de vos commerciaux. Même le soir. Même le samedi.</p>
+      <div class="ctas">
+        <a class="btn" href="https://elevenlabs.io/app/talk-to?agent_id=agent_1301m7j9jy8xfn985p1jxt3kntk8" target="_blank" rel="noopener">🎧 Écouter Camille en direct</a>
+        <a class="btn ghost" href="#calcul">Calculer mes pertes</a>
+      </div>
+      <p style="color:var(--muted);font-size:.85rem;margin-top:14px">Démo : Camille rappelle un prospect qui vient de demander la brochure d'un programme neuf (promoteur fictif).</p>
+    </div>
+    <div class="timeline" aria-label="Exemple de déroulé">
+      <div class="ev"><time>18:12:04</time><p>Formulaire rempli<br><small>Inès L. · brochure T3 · Lyon 9e</small></p></div>
+      <div class="ev"><time>18:12:26</time><p>Camille appelle<br><small>22 secondes plus tard</small></p></div>
+      <div class="ev"><time>18:15:40</time><p>Projet qualifié<br><small>Résidence principale · 300 k€ · accord bancaire · 6 mois</small></p></div>
+      <div class="ev"><time>18:16:02</time><p><b>RDV posé : samedi 11h</b><br><small>Agenda du conseiller + fiche dans le CRM</small></p></div>
+    </div>
+  </div>
+
+  <section>
+    <h2>Ce qui se passe aujourd'hui, et avec Fulgur</h2>
+    <div class="vs">
+      <div class="card bad"><h3>Sans Fulgur</h3><ul><li>Rappel le lendemain, voire jamais pour les leads du week-end</li><li>Le prospect a déjà parlé à 2 concurrents</li><li>Vos commerciaux passent leurs journées à tomber sur des messageries</li><li>Le budget publicitaire part en leads jamais joints</li></ul></div>
+      <div class="card good"><h3>Avec Fulgur</h3><ul><li>Appel en moins de 30 secondes, relances automatiques et SMS</li><li>Vous êtes le premier à lui parler</li><li>Vos commerciaux ne voient que des RDV qualifiés</li><li>Chaque lead est traité, mesuré et tracé dans le CRM</li></ul></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Branché sur vos outils en 5 jours</h2>
+    <div class="grid4">
+      <div class="card"><h3>Vos sources</h3><p>Formulaires du site, Meta Lead Ads, Google Ads, portails, Zapier ou Make.</p></div>
+      <div class="card"><h3>Votre discours</h3><p>Vos produits, vos prix publics, vos questions de qualification, votre ton.</p></div>
+      <div class="card"><h3>Votre agenda</h3><p>Les RDV tombent directement dans les créneaux de vos commerciaux.</p></div>
+      <div class="card"><h3>Votre CRM</h3><p>Résumé, qualification et enregistrement de chaque appel, automatiquement.</p></div>
+    </div>
+  </section>
+
+  <section id="calcul">
+    <h2>Combien de budget partent en leads jamais joints ?</h2>
+    <div class="calc">
+      <div>
+        <label for="n">Leads par mois : <b id="nv">400</b></label>
+        <input id="n" type="range" min="50" max="5000" step="50" value="400">
+        <label for="c">Coût moyen d'un lead : <b id="cv">80</b> €</label>
+        <input id="c" type="range" min="5" max="300" step="5" value="80">
+        <label for="m">Part des leads jamais joints : <b id="mv">35</b> %</label>
+        <input id="m" type="range" min="5" max="80" value="35">
+      </div>
+      <div class="out">
+        <div style="color:var(--muted)">Budget publicitaire perdu chaque mois</div>
+        <div class="big" id="lost">11 200 €</div>
+        <div style="color:var(--muted);font-size:.9rem">Fulgur Growth : 1 490 €/mois</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pilote">
+    <h2>Commencez par un pilote. Gardez les chiffres.</h2>
+    <div class="grid3">
+      <div class="card price best"><span class="tag">Pour démarrer</span><h3>Pilote 30 jours</h3><div class="amount">990 € <small>une fois</small></div><p>Déduit si vous continuez</p>
+        <ul><li>1 source de leads</li><li>Jusqu'à 300 leads</li><li>Rapport avant / après</li></ul></div>
+      <div class="card price"><h3>Growth</h3><div class="amount">1 490 € <small>/mois</small></div><p>Installation 1 990 €</p>
+        <ul><li>Jusqu'à 1 000 leads/mois</li><li>CRM + agenda</li><li>Relances SMS</li></ul></div>
+      <div class="card price"><h3>Scale</h3><div class="amount">2 990 € <small>/mois</small></div><p>Installation 4 900 €</p>
+        <ul><li>Jusqu'à 3 000 leads/mois</li><li>Multi-programmes, multi-sites</li><li>Relances sur 7 jours</li></ul></div>
+    </div>
+    <p style="margin-top:18px;color:var(--muted)">Plus de volume ou plusieurs marques : offre Enterprise sur devis.</p>
+  </section>
+
+  <section>
+    <h2>Questions fréquentes</h2>
+    <details><summary>Est-ce légal d'appeler les leads avec une IA ?</summary><p>Fulgur appelle uniquement des personnes qui viennent de demander à être contactées via votre formulaire. L'assistante se présente comme assistante vocale si on le lui demande, et chaque appel est tracé. Un contrat de sous-traitance RGPD est signé avec chaque client.</p></details>
+    <details><summary>Les prospects n'ont-ils pas peur de parler à une IA ?</summary><p>L'appel arrive au moment où le prospect pense à votre offre, avec une voix naturelle qui connaît votre produit. S'il préfère un humain, Camille pose simplement le rendez-vous avec votre conseiller.</p></details>
+    <details><summary>Et si le lead ne répond pas ?</summary><p>Relances automatiques à intervalles réglables, SMS de suivi, et tentative à la prochaine ouverture si la demande arrive la nuit.</p></details>
+    <details><summary>Quels secteurs ?</summary><p>Promotion immobilière, automobile, formation, courtage, habitat haut de gamme : toute entreprise qui reçoit des demandes entrantes et vend un produit à forte valeur.</p></details>
+  </section>
+
+  <section class="final">
+    <h2>Soyez le premier à rappeler. À chaque fois.</h2>
+    <a class="btn" href="mailto:contact@fulgur.fr?subject=Pilote%20Fulgur">Demander mon pilote</a>
+  </section>
+</div>
+<footer><div class="wrap">© 2026 Fulgur · Speed-to-lead IA pour les équipes commerciales</div></footer>
+<script>
+const $=id=>document.getElementById(id);
+function upd(){
+  const n=+$('n').value,c=+$('c').value,m=+$('m').value;
+  $('nv').textContent=n.toLocaleString('fr-FR');$('cv').textContent=c;$('mv').textContent=m;
+  $('lost').textContent=Math.round(n*c*m/100).toLocaleString('fr-FR')+' €';
+}
+['n','c','m'].forEach(i=>$(i).addEventListener('input',upd));upd();
+</script>
+</body>
+</html>
