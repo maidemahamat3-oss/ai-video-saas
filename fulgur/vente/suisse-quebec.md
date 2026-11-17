@@ -74,9 +74,9 @@ Si tu as la personne en direct :
 
 | Entreprise | Pays | Email publié | Téléphone | Page contact | Statut |
 |---|---|---|---|---|---|
-| Privalia Immobilier | Suisse | direction@privalia.ch (page Équipe), promotions@privalia.ch, info@privalia.ch | +41 22 308 52 00 | privalia-immobilier.ch/contact | Brouillon prêt vers direction@ |
+| Privalia Immobilier | Suisse | direction@privalia.ch (page Équipe), promotions@privalia.ch, info@privalia.ch | +41 22 308 52 00 | privalia-immobilier.ch/contact | **Envoyé le 17/11** (relance ven. 20/11 12h) |
 | Urban Project SA | Suisse | aucune adresse adaptée (rh@ = recrutement) | +41 22 318 98 10 | urbanproject-sa.ch/en/contact-us/ | Appel ou formulaire |
-| Rachel Julien | Québec | info@racheljulien.com | 514 849-9988 | racheljulien.com/en/contact/ | Brouillon prêt, adresse postale à ajouter |
-| Cosoltec | Québec | reception@cosoltec.com | 450 682-0000 | cosoltec.com/fr/contact | Brouillon prêt, adresse postale à ajouter |
+| Rachel Julien | Québec | info@racheljulien.com | 514 849-9988 | racheljulien.com/en/contact/ | En attente : adresse de la société à créer |
+| Cosoltec | Québec | reception@cosoltec.com | 450 682-0000 | cosoltec.com/fr/contact | En attente : adresse de la société à créer |
 
 Loi canadienne anti-pourriel : tout message commercial doit indiquer l'expéditeur, une **adresse postale** et un moyen simple de se désabonner.
