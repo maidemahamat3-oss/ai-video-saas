@@ -140,3 +140,4 @@ vite.config.ts.timestamp-*
 
 # Données personnelles de prospection : ne jamais pousser sur GitHub
 fulgur/prospects/
+decroche/prospects/
