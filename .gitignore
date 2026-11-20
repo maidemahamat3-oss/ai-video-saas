@@ -137,3 +137,7 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Vidéos générées (trop lourdes pour git)
+video/build/
+video/output/

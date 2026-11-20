@@ -1,0 +1,20 @@
+{
+  "title": "1 commando contre 12 gardes",
+  "voice_id": "nPczCjzI2devNBz1zQrb",
+  "model_id": "eleven_multilingual_v2",
+  "duration": 49.5,
+  "hook": ["1 COMMANDO", "CONTRE 12 GARDES"],
+  "end_card": { "title": "OPÉRATION ÉCLIPSE", "cta": "ÉCRIS « FAUCON » EN COMMENTAIRE" },
+  "lines": [
+    { "id": "l01", "at": "drone", "offset": 0.3, "text": "Un seul commando. Douze gardes. Une antenne à faire sauter." },
+    { "id": "l02", "at": "fps", "offset": 0.4, "text": "Nom de code : Faucon." },
+    { "id": "l03", "at": "sneak", "offset": 0.6, "text": "Règle numéro un : ne jamais se faire repérer." },
+    { "id": "l04", "at": "alarm", "offset": 0.1, "text": "Raté." },
+    { "id": "l05", "at": "alarm", "offset": 1.4, "text": "Plan B : on fonce." },
+    { "id": "l06", "at": "run", "offset": 0.3, "text": "Objectif : l'antenne radar." },
+    { "id": "l07", "at": "plant", "offset": 0.4, "text": "Charge posée." },
+    { "id": "l08", "at": "flee", "offset": 0.4, "text": "Huit secondes pour sortir de là." },
+    { "id": "l09", "at": "heli", "offset": 0.3, "text": "Mission accomplie." },
+    { "id": "l10", "at": "heli", "offset": 2.6, "text": "Je crée ce jeu. Tu veux y jouer ? Écris Faucon en commentaire." }
+  ]
+}
