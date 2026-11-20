@@ -227,6 +227,6 @@ with open(os.path.splitext(out)[0] + "_chapitres.txt", "w", encoding="utf-8") as
     for t, name in chapters: f.write(f"{int(t // 60)}:{int(t % 60):02d} {name}\n")
 subprocess.run(["ffmpeg", "-y", "-v", "error", "-stats", "-i", os.path.join(work, "master.mp4"), "-i", wav,
   "-filter_complex", f"[0:v]subtitles={assf}:fontsdir={FONTS}[v];[1:a]loudnorm=I=-14:TP=-2:LRA=11,aresample=48000,alimiter=limit=0.56:attack=1:release=60:level=disabled[a]",
-  "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-preset", "medium", "-crf", "21", "-maxrate", "10M", "-bufsize", "20M", "-pix_fmt", "yuv420p", "-movflags", "+faststart",
+  "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-preset", "medium", "-crf", "22", "-maxrate", "4800k", "-bufsize", "9600k", "-pix_fmt", "yuv420p", "-movflags", "+faststart",
   "-c:a", "aac", "-aac_coder", "twoloop", "-b:a", "256k", "-ar", "48000", "-t", f"{DUR:.3f}", out], check=True)
 print("Vidéo prête :", out)

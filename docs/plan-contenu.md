@@ -92,8 +92,9 @@ Si c'est bon, on passe à la version publique du jeu (voir ci-dessous) et on ajo
 
 | Version | Contenu |
 |---|---|
-| **0.1 (maintenant)** | Mission 01 jouable sur PC et téléphone : fusil, couteau, discrétion, alarme, charge explosive, hélico d'extraction, démo filmable |
-| 0.2 | Pistolet silencieux, fusil de précision, grenades, 3 missions |
+| 0.1 | Prototype en blocs, mission 01 |
+| **0.2 (maintenant)** | Rendu réaliste (soldats masqués animés, armes détaillées, ciels réels), 4 missions : Base Vipère, Le Port, Œil de Faucon (tir à 3 km), La Tour (voiture, 14 étages, le Serpent) |
+| 0.3 | Jeu en anglais et en français, grenades, pistolet silencieux, missions 05 et 06 |
 | 0.3 | Progression (médailles, déblocages), sons et musique dans le jeu, réglages |
 | 0.5 | Version publique gratuite sur le web (itch.io, CrazyGames, Poki) avec un lien dans la bio |
 | 1.0 | 5 missions + application mobile (Android puis iPhone) |
@@ -104,3 +105,10 @@ Si c'est bon, on passe à la version publique du jeu (voir ci-dessous) et on ajo
 2. **Écouter la voix off** du Short n° 1 et dire si elle te plaît. Sinon, on peut en essayer une autre.
 3. **Publier** : soit tu publies toi-même les fichiers MP4, soit tu connectes tes comptes (connecteur OmniSocials dans les réglages de claude.ai) et je programme les publications.
 4. **Ton avis sur le jeu** : joue à la mission 01 et dis-moi ce que tu veux changer.
+
+## État au 20 novembre
+
+- Short n° 2 (réaliste) en FR et EN : `video/output/short-02-fr.mp4`, `short-02-en.mp4`
+- Film YouTube de 11 min en FR et EN : `video/output/film-fr.mp4`, `film-en.mp4` (+ miniatures et chapitres)
+- Pour atteindre 20 à 30 min : ajouter 2 à 4 missions (environ 3 min de film chacune) ou rendre le tournage sur un ordinateur avec carte graphique (presque en temps réel au lieu d'environ 1,5 s par image ici).
+- Textes de publication : `docs/publication.md`
