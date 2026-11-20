@@ -1,0 +1,30 @@
+{
+  "title": { "fr": "3 km, une seule balle", "en": "3 km, one bullet" },
+  "voice_id": "nPczCjzI2devNBz1zQrb",
+  "model_id": "eleven_turbo_v2_5",
+  "fps": 30,
+  "segments": [
+    { "src": "short_sniper", "w": 0, "from": 0, "to": 4.5 },
+    { "src": "short_base", "w": 0, "from": 0, "to": 4.0 },
+    { "src": "short_base", "w": 1, "from": 0, "to": 3.0 },
+    { "src": "short_port", "w": 0, "from": 0, "to": 3.0 },
+    { "src": "short_tower", "w": 0, "from": 0, "to": 4.5 },
+    { "src": "short_tower", "w": 1, "from": 0, "to": 3.0 },
+    { "src": "short_tower", "w": 2, "from": 0, "to": 3.0 },
+    { "src": "short_sniper", "w": 1, "from": 0, "to": 12.5 },
+    { "src": "short_tower", "w": 3, "from": 0, "to": 6.5 }
+  ],
+  "hook": { "fr": ["3 KM", "UNE SEULE BALLE"], "en": ["3 KM", "ONE BULLET"] },
+  "end_card": { "fr": { "title": "OPÉRATION ÉCLIPSE", "cta": "LE FILM COMPLET EST SUR YOUTUBE" }, "en": { "title": "OPERATION ECLIPSE", "cta": "FULL MOVIE ON YOUTUBE" } },
+  "lines": [
+    { "id": "s01", "at": 0.3, "fr": "Trois kilomètres. Une seule balle.", "en": "Three kilometers. One bullet." },
+    { "id": "s02", "at": 4.7, "fr": "Un seul commando contre tout le réseau Vipère.", "en": "One commando against the entire Viper network." },
+    { "id": "s03", "at": 8.7, "fr": "En silence…", "en": "Quietly…" },
+    { "id": "s04", "at": 11.6, "fr": "…ou pas.", "en": "…or not." },
+    { "id": "s05", "at": 14.8, "fr": "Quatorze étages. Dix-huit gardes.", "en": "Fourteen floors. Eighteen guards." },
+    { "id": "s06", "at": 21.2, "fr": "Et le Serpent tout en haut.", "en": "And the Serpent at the very top." },
+    { "id": "s07", "at": 25.1, "fr": "Mais d'abord… ce tir.", "en": "But first… this shot." },
+    { "id": "s08", "at": 35.4, "fr": "Cible neutralisée.", "en": "Target down." },
+    { "id": "s09", "at": 37.8, "fr": "C'est mon jeu. Le film complet est sur YouTube. Tu veux y jouer ? Écris Faucon.", "en": "This is my game. The full movie is on YouTube. Want to play it? Comment Falcon." }
+  ]
+}

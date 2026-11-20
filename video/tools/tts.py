@@ -1,6 +1,7 @@
 """Génère la voix off de chaque réplique avec ElevenLabs (+ minutage mot à mot).
 
-Usage : python3 tts.py <script.json> <dossier_sortie>
+Usage : python3 tts.py <script.json> <dossier_sortie> [langue fr|en]
+Les répliques ont soit un champ "text", soit un champ par langue ("fr", "en").
 Clé API : variable d'environnement ELEVENLABS_API_KEY.
 Sortie : <id>.mp3 et <id>.json (alignement caractère par caractère) pour chaque réplique.
 """
@@ -12,6 +13,7 @@ import sys
 import urllib.request
 
 script_path, out = sys.argv[1], sys.argv[2]
+lang = sys.argv[3] if len(sys.argv) > 3 else "fr"
 os.makedirs(out, exist_ok=True)
 script = json.load(open(script_path, encoding="utf-8"))
 key = os.environ.get("ELEVENLABS_API_KEY", "dummy")
@@ -19,6 +21,7 @@ ca = os.environ.get("SSL_CERT_FILE") or ("/root/.ccr/ca-bundle.crt" if os.path.e
 ctx = ssl.create_default_context(cafile=ca)
 
 for line in script["lines"]:
+    line = {**line, "text": line.get(lang) or line.get("text")}
     mp3 = os.path.join(out, line["id"] + ".mp3")
     meta = os.path.join(out, line["id"] + ".json")
     if os.path.exists(mp3) and os.path.exists(meta) and json.load(open(meta)).get("text") == line["text"]:
@@ -26,7 +29,7 @@ for line in script["lines"]:
     body = {
         "text": line["text"],
         "model_id": script.get("model_id", "eleven_multilingual_v2"),
-        "language_code": "fr",
+        "language_code": lang,
         "voice_settings": {"stability": 0.42, "similarity_boost": 0.8, "style": 0.45, "use_speaker_boost": True, "speed": line.get("speed", 1.0)},
     }
     url = f"https://api.elevenlabs.io/v1/text-to-speech/{script['voice_id']}/with-timestamps?output_format=mp3_44100_128"
