@@ -1,87 +1,688 @@
 {
-  "title": { "fr": "Opération Éclipse — le film", "en": "Operation Eclipse — The Movie" },
-  "voice_id": "nPczCjzI2devNBz1zQrb",
-  "model_id": "eleven_turbo_v2_5",
-  "fps": 24,
-  "segments": [
-    { "id": "co1", "src": "long_sniper", "from": "shot-0.4", "to": "impact_done", "music": "tension", "lines": [
-      { "id": "n01", "at": 0.5, "fr": "Trois kilomètres. Une seule balle.", "en": "Three kilometers. One bullet." } ] },
-    { "id": "co2", "src": "long_tower", "from": "crash", "to": "crash+3.6", "music": "action", "braam": true },
-    { "id": "co3", "src": "long_port", "from": "barrel+1.3", "to": "barrel+3.8", "music": "action" },
-    { "id": "co4", "src": "long_base", "from": "boom-0.4", "to": "boom+3", "music": "action" },
-    { "id": "co5", "src": "long_tower", "from": "bossdown-2.6", "to": "bossdown+1.2", "music": "action", "lines": [
-      { "id": "n02", "at": 0.2, "fr": "Quatorze étages. Dix-huit gardes.", "en": "Fourteen floors. Eighteen guards." } ] },
-    { "id": "co6", "src": "cine_tower", "from": 0, "to": 9, "music": "braam", "title": true, "lines": [
-      { "id": "n03", "at": 0.8, "fr": "Et un seul homme pour faire tomber le réseau Vipère.", "en": "And one man to bring down the Viper network." } ] },
-
-    { "id": "in1", "src": "cine_base", "from": 0, "to": 9, "music": "calm", "lines": [
-      { "id": "n04", "at": 0.6, "fr": "Depuis cinq ans, le réseau Vipère contrôle tout : les armes, les ports, les frontières.", "en": "For five years, the Viper network has controlled everything: weapons, ports, borders." } ] },
-    { "id": "in2", "src": "cine_port", "from": 0, "to": 9, "music": "calm", "lines": [
-      { "id": "n05", "at": 0.4, "fr": "À sa tête, un homme que personne n'a jamais vu. On l'appelle le Serpent.", "en": "At its head, a man no one has ever seen. They call him the Serpent." } ] },
-    { "id": "in3", "src": "cine_sniper", "from": 0, "to": 10, "music": "calm", "lines": [
-      { "id": "n06", "at": 0.4, "fr": "Pour l'atteindre, il faudra d'abord l'aveugler, puis lui prendre ses informateurs et son bras droit.", "en": "To reach him, we first have to blind him, then take away his informants and his right-hand man." } ] },
-    { "id": "in4", "src": "cine_tower", "from": 49, "to": 61, "music": "calm", "lines": [
-      { "id": "n07", "at": 0.6, "fr": "Une seule personne a accepté la mission. Nom de code : Faucon.", "en": "Only one person accepted the mission. Code name: Falcon." } ] },
-
-    { "id": "m1c", "card": { "k": "MISSION 01", "fr": "BASE VIPÈRE", "en": "VIPER BASE" }, "d": 4, "music": "braam" },
-    { "id": "m1b", "src": "cine_base", "from": 9, "to": 37, "music": "calm", "lines": [
-      { "id": "n10", "at": 1.0, "fr": "Mission un. La Base Vipère, dans le désert du Nord.", "en": "Mission one. Viper Base, in the northern desert." },
-      { "id": "n11", "at": 6.5, "fr": "Douze gardes, deux tours de guet, et une antenne radar qui surveille toute la région.", "en": "Twelve guards, two watchtowers, and a radar antenna watching the entire region." },
-      { "id": "n12", "at": 15.5, "fr": "Tant qu'elle est debout, personne ne peut approcher du Serpent. Faucon a quatre minutes.", "en": "As long as it stands, no one gets near the Serpent. Falcon has four minutes." } ] },
-    { "id": "m1g", "src": "long_base", "from": 0, "to": "end", "music": "game", "radio": true, "lines": [
-      { "id": "n13", "at": "sneak+0.5", "fr": "Première règle : rester invisible.", "en": "Rule number one: stay invisible." },
-      { "id": "n14", "at": "alarm+0.8", "fr": "Mais aucun plan ne survit au premier contact.", "en": "But no plan survives first contact." },
-      { "id": "n15", "at": "heli+0.8", "fr": "L'antenne est tombée. Le Serpent est aveugle.", "en": "The antenna is down. The Serpent is blind." } ] },
-    { "id": "m1r", "src": "long_base", "from": "knife-0.6", "to": "knife+1.4", "speed": 0.5, "replay": true, "music": "calm" },
-    { "id": "m1r2", "src": "long_base", "from": "boom-0.3", "to": "boom+2.8", "speed": 0.5, "replay": true, "music": "calm" },
-    { "id": "m1d", "src": "cine_base", "from": 37, "to": 63, "music": "calm", "lines": [
-      { "id": "n16", "at": 1.5, "fr": "Mais un réseau comme Vipère ne tient pas qu'à une antenne.", "en": "But a network like Viper doesn't run on antennas." },
-      { "id": "n17", "at": 7.0, "fr": "Il tient à ceux qui parlent… et à ceux qui se taisent.", "en": "It runs on the people who talk… and the people who stay silent." } ] },
-
-    { "id": "m2c", "card": { "k": "MISSION 02", "fr": "LE PORT", "en": "THE PORT" }, "d": 4, "music": "braam" },
-    { "id": "m2b", "src": "cine_port", "from": 9, "to": 38, "music": "calm", "lines": [
-      { "id": "n20", "at": 1.0, "fr": "Mission deux. Le port de Salva, une heure du matin.", "en": "Mission two. The port of Salva, one in the morning." },
-      { "id": "n21", "at": 6.5, "fr": "Un informateur a été capturé. Il sait où vit le colonel Varga, le bras droit du Serpent.", "en": "An informant has been captured. He knows where Colonel Varga lives, the Serpent's right-hand man." },
-      { "id": "n22", "at": 17.0, "fr": "Il est enfermé dans un conteneur, quelque part sur les quais.", "en": "He's locked in a container, somewhere on the docks." } ] },
-    { "id": "m2g", "src": "long_port", "from": 0, "to": "end", "music": "game", "radio": true, "lines": [
-      { "id": "n23", "at": "knife2+0.6", "fr": "Un garde. Puis deux.", "en": "One guard. Then two." },
-      { "id": "n24", "at": "barrel-1.6", "fr": "Parfois, le plus discret… c'est de faire beaucoup de bruit.", "en": "Sometimes the quietest way… is to make a lot of noise." },
-      { "id": "n25", "at": "escort+0.5", "fr": "L'informateur est vivant.", "en": "The informant is alive." } ] },
-    { "id": "m2r", "src": "long_port", "from": "barrel+1.3", "to": "barrel+3.6", "speed": 0.5, "replay": true, "music": "calm" },
-    { "id": "m2d", "src": "cine_port", "from": 44, "to": 63, "music": "calm", "lines": [
-      { "id": "n26", "at": 1.0, "fr": "L'informateur a parlé. Le colonel quitte sa villa chaque matin, à six heures.", "en": "The informant talked. The colonel leaves his villa every morning at six." },
-      { "id": "n27", "at": 9.0, "fr": "Il n'y aura qu'une seule fenêtre.", "en": "There will be only one window." } ] },
-
-    { "id": "m3c", "card": { "k": "MISSION 03", "fr": "ŒIL DE FAUCON", "en": "FALCON'S EYE" }, "d": 4, "music": "braam" },
-    { "id": "m3b", "src": "cine_sniper", "from": 10, "to": 44, "music": "calm", "lines": [
-      { "id": "n30", "at": 1.0, "fr": "Mission trois. Les monts Karas, à l'aube.", "en": "Mission three. The Karas mountains, at dawn." },
-      { "id": "n31", "at": 7.5, "fr": "Impossible d'approcher la villa : trop de gardes, trop de terrain à découvert.", "en": "Getting close to the villa is impossible: too many guards, too much open ground." },
-      { "id": "n32", "at": 19.0, "fr": "Alors Faucon va tirer d'ici. À plus de trois kilomètres.", "en": "So Falcon will shoot from here. From more than three kilometers away." } ] },
-    { "id": "m3g", "src": "long_sniper", "from": 0, "to": "end", "music": "game", "radio": true, "lines": [
-      { "id": "n33", "at": "lase+0.3", "fr": "Trois mille vingt-cinq mètres. Vent de gauche, deux virgule six mètres par seconde.", "en": "Three thousand and twenty-five meters. Wind from the left, two point six meters per second." },
-      { "id": "n34", "at": "aim-0.6", "fr": "La balle va voler plus de cinq secondes.", "en": "The bullet will fly for more than five seconds." },
-      { "id": "n35", "at": "impact_done+0.4", "fr": "Cible neutralisée.", "en": "Target down." } ] },
-    { "id": "m3r", "src": "long_sniper", "from": "shot+1.5", "to": "impact_done", "speed": 0.6, "replay": true, "music": "calm" },
-    { "id": "m3d", "src": "cine_sniper", "from": 44, "to": 66, "music": "calm", "lines": [
-      { "id": "n36", "at": 1.0, "fr": "Sans antenne, sans informateur, sans bras droit… il ne reste plus que lui.", "en": "No antenna, no informant, no right-hand man… only he remains." },
-      { "id": "n37", "at": 9.5, "fr": "Le Serpent. Au quatorzième étage de sa tour.", "en": "The Serpent. On the fourteenth floor of his tower." } ] },
-
-    { "id": "m4c", "card": { "k": "MISSION 04", "fr": "LA TOUR", "en": "THE TOWER" }, "d": 4, "music": "braam" },
-    { "id": "m4b", "src": "cine_tower", "from": 10, "to": 43, "music": "calm", "lines": [
-      { "id": "n40", "at": 1.0, "fr": "Mission quatre. La capitale, vingt-trois heures. La Tour Vipère.", "en": "Mission four. The capital, eleven p.m. The Viper Tower." },
-      { "id": "n41", "at": 10.0, "fr": "Quatorze étages, dix-huit gardes, et une seule façon d'entrer : par la grande porte.", "en": "Fourteen floors, eighteen guards, and only one way in: through the front door." } ] },
-    { "id": "m4g", "src": "long_tower", "from": 0, "to": "end", "music": "game", "radio": true, "lines": [
-      { "id": "n42", "at": "exit+0.2", "fr": "Le garde n'a rien vu venir.", "en": "The guard never saw it coming." },
-      { "id": "n43", "at": "floor5+0.2", "fr": "Étage cinq.", "en": "Fifth floor." },
-      { "id": "n44", "at": "boss+0.3", "fr": "Le Serpent. Enfin.", "en": "The Serpent. At last." },
-      { "id": "n45", "at": "bossdown+0.6", "fr": "Le réseau Vipère vient de perdre sa tête.", "en": "The Viper network just lost its head." } ] },
-    { "id": "m4r", "src": "long_tower", "from": "crash", "to": "crash+3.4", "speed": 0.5, "replay": true, "music": "calm" },
-    { "id": "m4r2", "src": "long_tower", "from": "bossdown-1.6", "to": "bossdown+1", "speed": 0.5, "replay": true, "music": "calm" },
-
-    { "id": "o1", "src": "cine_tower", "from": 43, "to": 61, "music": "resolve", "lines": [
-      { "id": "n50", "at": 1.0, "fr": "Quatre missions. Une seule nuit pour en finir.", "en": "Four missions. One night to end it." },
-      { "id": "n51", "at": 7.0, "fr": "Faucon disparaît comme il est venu… en silence.", "en": "Falcon vanishes the way he came… in silence." } ] },
-    { "id": "o2", "src": "cine_sniper", "from": 56, "to": 66, "music": "resolve", "end": true, "lines": [
-      { "id": "n52", "at": 0.4, "fr": "Opération Éclipse, c'est mon jeu. Si tu veux y jouer, écris Faucon en commentaire, et dis-moi quelle mission tu veux voir ensuite.", "en": "Operation Eclipse is my game. If you want to play it, comment Falcon, and tell me which mission you want to see next." } ] }
-  ]
+ "title": {
+  "fr": "Opération Éclipse — le film",
+  "en": "Operation Eclipse — The Movie"
+ },
+ "voice_id": "nPczCjzI2devNBz1zQrb",
+ "model_id": "eleven_turbo_v2_5",
+ "fps": 24,
+ "segments": [
+  {
+   "id": "co1",
+   "src": "long_sniper",
+   "from": "shot-0.4",
+   "to": "impact_done",
+   "music": "tension",
+   "lines": [
+    {
+     "id": "n01",
+     "at": 0.5,
+     "fr": "Trois kilomètres. Une seule balle.",
+     "en": "Three kilometers. One bullet."
+    }
+   ]
+  },
+  {
+   "id": "co2",
+   "src": "long_tower",
+   "from": "crash",
+   "to": "crash+3.6",
+   "music": "action",
+   "braam": true
+  },
+  {
+   "id": "co3",
+   "src": "long_port",
+   "from": "barrel+1.3",
+   "to": "barrel+3.8",
+   "music": "action"
+  },
+  {
+   "id": "co4",
+   "src": "long_base",
+   "from": "boom-0.4",
+   "to": "boom+3",
+   "music": "action"
+  },
+  {
+   "id": "co5",
+   "src": "long_tower",
+   "from": "bossdown-2.6",
+   "to": "bossdown+1.2",
+   "music": "action",
+   "lines": [
+    {
+     "id": "n02",
+     "at": 0.2,
+     "fr": "Quatorze étages. Dix-huit gardes.",
+     "en": "Fourteen floors. Eighteen guards."
+    }
+   ]
+  },
+  {
+   "id": "co6",
+   "src": "cine_tower",
+   "from": 0,
+   "to": 9,
+   "music": "braam",
+   "title": true,
+   "lines": [
+    {
+     "id": "n03",
+     "at": 0.8,
+     "fr": "Et un seul homme pour faire tomber le réseau Vipère.",
+     "en": "And one man to bring down the Viper network."
+    }
+   ]
+  },
+  {
+   "id": "in1",
+   "src": "cine_base",
+   "from": 0,
+   "to": 9,
+   "music": "calm",
+   "lines": [
+    {
+     "id": "n04",
+     "at": 0.6,
+     "fr": "Depuis cinq ans, le réseau Vipère contrôle tout : les armes, les ports, les frontières.",
+     "en": "For five years, the Viper network has controlled everything: weapons, ports, borders."
+    }
+   ]
+  },
+  {
+   "id": "in2",
+   "src": "cine_port",
+   "from": 0,
+   "to": 9,
+   "music": "calm",
+   "lines": [
+    {
+     "id": "n05",
+     "at": 0.4,
+     "fr": "À sa tête, un homme que personne n'a jamais vu. On l'appelle le Serpent.",
+     "en": "At its head, a man no one has ever seen. They call him the Serpent."
+    }
+   ]
+  },
+  {
+   "id": "in3",
+   "src": "cine_sniper",
+   "from": 0,
+   "to": 10,
+   "music": "calm",
+   "lines": [
+    {
+     "id": "n06",
+     "at": 0.4,
+     "fr": "Pour l'atteindre, il faudra d'abord l'aveugler, puis lui prendre ses informateurs et son bras droit.",
+     "en": "To reach him, we first have to blind him, then take away his informants and his right-hand man."
+    }
+   ]
+  },
+  {
+   "id": "in4",
+   "src": "cine_tower",
+   "from": 49,
+   "to": 61,
+   "music": "calm",
+   "lines": [
+    {
+     "id": "n07",
+     "at": 0.6,
+     "fr": "Une seule personne a accepté la mission. Nom de code : Faucon.",
+     "en": "Only one person accepted the mission. Code name: Falcon."
+    }
+   ]
+  },
+  {
+   "id": "d1",
+   "still": "dossier_vipere",
+   "d": 6.5,
+   "label": {
+    "fr": "SOLDAT VIPÈRE",
+    "en": "VIPER SOLDIER"
+   },
+   "music": "calm",
+   "lines": [
+    {
+     "id": "n08",
+     "at": 0.4,
+     "fr": "Ses soldats portent tous le même masque. Ils ne parlent pas, ils ne reculent pas.",
+     "en": "His soldiers all wear the same mask. They don't talk, and they don't back down."
+    }
+   ]
+  },
+  {
+   "id": "d2",
+   "still": "dossier_varga",
+   "d": 6.5,
+   "label": {
+    "fr": "CIBLE N° 2 · COLONEL VARGA",
+    "en": "TARGET #2 · COLONEL VARGA"
+   },
+   "music": "calm",
+   "lines": [
+    {
+     "id": "n09",
+     "at": 0.4,
+     "fr": "Son bras droit : le colonel Varga. C'est lui qui commande les troupes.",
+     "en": "His right-hand man: Colonel Varga. He commands the troops."
+    }
+   ]
+  },
+  {
+   "id": "d3",
+   "still": "dossier_serpent",
+   "d": 7,
+   "label": {
+    "fr": "CIBLE N° 1 · LE SERPENT",
+    "en": "TARGET #1 · THE SERPENT"
+   },
+   "music": "tension",
+   "lines": [
+    {
+     "id": "n0a",
+     "at": 0.4,
+     "fr": "Et lui… le Serpent. La seule photo qui existe de lui.",
+     "en": "And him… the Serpent. The only photo of him that exists."
+    }
+   ]
+  },
+  {
+   "id": "m1c",
+   "card": {
+    "k": "MISSION 01",
+    "fr": "BASE VIPÈRE",
+    "en": "VIPER BASE"
+   },
+   "d": 4,
+   "music": "braam"
+  },
+  {
+   "id": "m1m",
+   "still": "map_base",
+   "d": 5.5,
+   "map": true,
+   "label": {
+    "fr": "OBJECTIF : ANTENNE RADAR",
+    "en": "OBJECTIVE: RADAR ANTENNA"
+   },
+   "music": "calm"
+  },
+  {
+   "id": "m1b",
+   "src": "cine_base",
+   "from": 9,
+   "to": 37,
+   "music": "calm",
+   "lines": [
+    {
+     "id": "n10",
+     "at": 1.0,
+     "fr": "Mission un. La Base Vipère, dans le désert du Nord.",
+     "en": "Mission one. Viper Base, in the northern desert."
+    },
+    {
+     "id": "n11",
+     "at": 6.5,
+     "fr": "Douze gardes, deux tours de guet, et une antenne radar qui surveille toute la région.",
+     "en": "Twelve guards, two watchtowers, and a radar antenna watching the entire region."
+    },
+    {
+     "id": "n12",
+     "at": 15.5,
+     "fr": "Tant qu'elle est debout, personne ne peut approcher du Serpent. Faucon a quatre minutes.",
+     "en": "As long as it stands, no one gets near the Serpent. Falcon has four minutes."
+    }
+   ]
+  },
+  {
+   "id": "m1g",
+   "src": "long_base",
+   "from": 0,
+   "to": "end",
+   "music": "game",
+   "radio": true,
+   "lines": [
+    {
+     "id": "n13",
+     "at": "sneak+0.5",
+     "fr": "Première règle : rester invisible.",
+     "en": "Rule number one: stay invisible."
+    },
+    {
+     "id": "n14",
+     "at": "alarm+0.8",
+     "fr": "Mais aucun plan ne survit au premier contact.",
+     "en": "But no plan survives first contact."
+    },
+    {
+     "id": "n15",
+     "at": "heli+0.8",
+     "fr": "L'antenne est tombée. Le Serpent est aveugle.",
+     "en": "The antenna is down. The Serpent is blind."
+    }
+   ]
+  },
+  {
+   "id": "m1r",
+   "src": "long_base",
+   "from": "knife-0.6",
+   "to": "knife+1.4",
+   "speed": 0.5,
+   "replay": true,
+   "music": "calm"
+  },
+  {
+   "id": "m1r2",
+   "src": "long_base",
+   "from": "boom-0.3",
+   "to": "boom+2.8",
+   "speed": 0.5,
+   "replay": true,
+   "music": "calm"
+  },
+  {
+   "id": "m1d",
+   "src": "cine_base",
+   "from": 37,
+   "to": 63,
+   "music": "calm",
+   "lines": [
+    {
+     "id": "n16",
+     "at": 1.5,
+     "fr": "Mais un réseau comme Vipère ne tient pas qu'à une antenne.",
+     "en": "But a network like Viper doesn't run on antennas."
+    },
+    {
+     "id": "n17",
+     "at": 7.0,
+     "fr": "Il tient à ceux qui parlent… et à ceux qui se taisent.",
+     "en": "It runs on the people who talk… and the people who stay silent."
+    }
+   ]
+  },
+  {
+   "id": "m2c",
+   "card": {
+    "k": "MISSION 02",
+    "fr": "LE PORT",
+    "en": "THE PORT"
+   },
+   "d": 4,
+   "music": "braam"
+  },
+  {
+   "id": "m2m",
+   "still": "map_port",
+   "d": 5.5,
+   "map": true,
+   "label": {
+    "fr": "OBJECTIF : L'INFORMATEUR",
+    "en": "OBJECTIVE: THE INFORMANT"
+   },
+   "music": "calm"
+  },
+  {
+   "id": "m2b",
+   "src": "cine_port",
+   "from": 9,
+   "to": 38,
+   "music": "calm",
+   "lines": [
+    {
+     "id": "n20",
+     "at": 1.0,
+     "fr": "Mission deux. Le port de Salva, une heure du matin.",
+     "en": "Mission two. The port of Salva, one in the morning."
+    },
+    {
+     "id": "n21",
+     "at": 6.5,
+     "fr": "Un informateur a été capturé. Il sait où vit le colonel Varga, le bras droit du Serpent.",
+     "en": "An informant has been captured. He knows where Colonel Varga lives, the Serpent's right-hand man."
+    },
+    {
+     "id": "n22",
+     "at": 17.0,
+     "fr": "Il est enfermé dans un conteneur, quelque part sur les quais.",
+     "en": "He's locked in a container, somewhere on the docks."
+    }
+   ]
+  },
+  {
+   "id": "m2g",
+   "src": "long_port",
+   "from": 0,
+   "to": "end",
+   "music": "game",
+   "radio": true,
+   "lines": [
+    {
+     "id": "n23",
+     "at": "knife2+0.6",
+     "fr": "Un garde. Puis deux.",
+     "en": "One guard. Then two."
+    },
+    {
+     "id": "n24",
+     "at": "barrel-1.6",
+     "fr": "Parfois, le plus discret… c'est de faire beaucoup de bruit.",
+     "en": "Sometimes the quietest way… is to make a lot of noise."
+    },
+    {
+     "id": "n25",
+     "at": "escort+0.5",
+     "fr": "L'informateur est vivant.",
+     "en": "The informant is alive."
+    }
+   ]
+  },
+  {
+   "id": "m2r",
+   "src": "long_port",
+   "from": "barrel+1.3",
+   "to": "barrel+3.6",
+   "speed": 0.5,
+   "replay": true,
+   "music": "calm"
+  },
+  {
+   "id": "m2d",
+   "src": "cine_port",
+   "from": 44,
+   "to": 63,
+   "music": "calm",
+   "lines": [
+    {
+     "id": "n26",
+     "at": 1.0,
+     "fr": "L'informateur a parlé. Le colonel quitte sa villa chaque matin, à six heures.",
+     "en": "The informant talked. The colonel leaves his villa every morning at six."
+    },
+    {
+     "id": "n27",
+     "at": 9.0,
+     "fr": "Il n'y aura qu'une seule fenêtre.",
+     "en": "There will be only one window."
+    }
+   ]
+  },
+  {
+   "id": "m3c",
+   "card": {
+    "k": "MISSION 03",
+    "fr": "ŒIL DE FAUCON",
+    "en": "FALCON'S EYE"
+   },
+   "d": 4,
+   "music": "braam"
+  },
+  {
+   "id": "m3m",
+   "still": "map_sniper",
+   "d": 5.5,
+   "map": true,
+   "label": {
+    "fr": "OBJECTIF : COLONEL VARGA · 3 KM",
+    "en": "OBJECTIVE: COLONEL VARGA · 3 KM"
+   },
+   "music": "calm"
+  },
+  {
+   "id": "m3b",
+   "src": "cine_sniper",
+   "from": 10,
+   "to": 44,
+   "music": "calm",
+   "lines": [
+    {
+     "id": "n30",
+     "at": 1.0,
+     "fr": "Mission trois. Les monts Karas, à l'aube.",
+     "en": "Mission three. The Karas mountains, at dawn."
+    },
+    {
+     "id": "n31",
+     "at": 7.5,
+     "fr": "Impossible d'approcher la villa : trop de gardes, trop de terrain à découvert.",
+     "en": "Getting close to the villa is impossible: too many guards, too much open ground."
+    },
+    {
+     "id": "n32",
+     "at": 19.0,
+     "fr": "Alors Faucon va tirer d'ici. À plus de trois kilomètres.",
+     "en": "So Falcon will shoot from here. From more than three kilometers away."
+    }
+   ]
+  },
+  {
+   "id": "m3g",
+   "src": "long_sniper",
+   "from": 0,
+   "to": "end",
+   "music": "game",
+   "radio": true,
+   "lines": [
+    {
+     "id": "n33",
+     "at": "lase+0.3",
+     "fr": "Trois mille vingt-cinq mètres. Vent de gauche, deux virgule six mètres par seconde.",
+     "en": "Three thousand and twenty-five meters. Wind from the left, two point six meters per second."
+    },
+    {
+     "id": "n34",
+     "at": "aim-0.6",
+     "fr": "La balle va voler plus de cinq secondes.",
+     "en": "The bullet will fly for more than five seconds."
+    },
+    {
+     "id": "n35",
+     "at": "impact_done+0.4",
+     "fr": "Cible neutralisée.",
+     "en": "Target down."
+    }
+   ]
+  },
+  {
+   "id": "m3r",
+   "src": "long_sniper",
+   "from": "shot+1.5",
+   "to": "impact_done",
+   "speed": 0.6,
+   "replay": true,
+   "music": "calm"
+  },
+  {
+   "id": "m3d",
+   "src": "cine_sniper",
+   "from": 44,
+   "to": 66,
+   "music": "calm",
+   "lines": [
+    {
+     "id": "n36",
+     "at": 1.0,
+     "fr": "Sans antenne, sans informateur, sans bras droit… il ne reste plus que lui.",
+     "en": "No antenna, no informant, no right-hand man… only he remains."
+    },
+    {
+     "id": "n37",
+     "at": 9.5,
+     "fr": "Le Serpent. Au quatorzième étage de sa tour.",
+     "en": "The Serpent. On the fourteenth floor of his tower."
+    }
+   ]
+  },
+  {
+   "id": "m4c",
+   "card": {
+    "k": "MISSION 04",
+    "fr": "LA TOUR",
+    "en": "THE TOWER"
+   },
+   "d": 4,
+   "music": "braam"
+  },
+  {
+   "id": "m4m",
+   "still": "map_tower",
+   "d": 5.5,
+   "map": true,
+   "label": {
+    "fr": "OBJECTIF : LE SERPENT · 14E ÉTAGE",
+    "en": "OBJECTIVE: THE SERPENT · 14TH FLOOR"
+   },
+   "music": "calm"
+  },
+  {
+   "id": "m4b",
+   "src": "cine_tower",
+   "from": 10,
+   "to": 43,
+   "music": "calm",
+   "lines": [
+    {
+     "id": "n40",
+     "at": 1.0,
+     "fr": "Mission quatre. La capitale, vingt-trois heures. La Tour Vipère.",
+     "en": "Mission four. The capital, eleven p.m. The Viper Tower."
+    },
+    {
+     "id": "n41",
+     "at": 10.0,
+     "fr": "Quatorze étages, dix-huit gardes, et une seule façon d'entrer : par la grande porte.",
+     "en": "Fourteen floors, eighteen guards, and only one way in: through the front door."
+    }
+   ]
+  },
+  {
+   "id": "m4g",
+   "src": "long_tower",
+   "from": 0,
+   "to": "end",
+   "music": "game",
+   "radio": true,
+   "lines": [
+    {
+     "id": "n42",
+     "at": "exit+0.2",
+     "fr": "Le garde n'a rien vu venir.",
+     "en": "The guard never saw it coming."
+    },
+    {
+     "id": "n43",
+     "at": "floor5+0.2",
+     "fr": "Étage cinq.",
+     "en": "Fifth floor."
+    },
+    {
+     "id": "n44",
+     "at": "boss+0.3",
+     "fr": "Le Serpent. Enfin.",
+     "en": "The Serpent. At last."
+    },
+    {
+     "id": "n45",
+     "at": "bossdown+0.6",
+     "fr": "Le réseau Vipère vient de perdre sa tête.",
+     "en": "The Viper network just lost its head."
+    }
+   ]
+  },
+  {
+   "id": "m4r",
+   "src": "long_tower",
+   "from": "crash",
+   "to": "crash+3.4",
+   "speed": 0.5,
+   "replay": true,
+   "music": "calm"
+  },
+  {
+   "id": "m4r2",
+   "src": "long_tower",
+   "from": "bossdown-1.6",
+   "to": "bossdown+1",
+   "speed": 0.5,
+   "replay": true,
+   "music": "calm"
+  },
+  {
+   "id": "b1",
+   "compare": {
+    "left": "../short-01/frames",
+    "left_fps": 30,
+    "left_from": 2.0,
+    "right": "short_sniper/w1",
+    "right_fps": 30,
+    "right_from": 0.0
+   },
+   "d": 12.4,
+   "music": "calm",
+   "labels": {
+    "fr": [
+     "AVANT",
+     "MAINTENANT"
+    ],
+    "en": [
+     "BEFORE",
+     "NOW"
+    ]
+   },
+   "lines": [
+    {
+     "id": "n48",
+     "at": 0.5,
+     "fr": "Il y a quelques jours, Opération Éclipse ressemblait à ça. Des blocs, des formes simples.",
+     "en": "A few days ago, Operation Eclipse looked like this. Blocks, simple shapes."
+    },
+    {
+     "id": "n49",
+     "at": 6.3,
+     "fr": "Aujourd'hui : des soldats animés, de vraies armes, un tir balistique à trois kilomètres.",
+     "en": "Today: animated soldiers, real weapons, a ballistic shot from three kilometers."
+    }
+   ]
+  },
+  {
+   "id": "o1",
+   "src": "cine_tower",
+   "from": 43,
+   "to": 61,
+   "music": "resolve",
+   "lines": [
+    {
+     "id": "n50",
+     "at": 1.0,
+     "fr": "Quatre missions. Une seule nuit pour en finir.",
+     "en": "Four missions. One night to end it."
+    },
+    {
+     "id": "n51",
+     "at": 7.0,
+     "fr": "Faucon disparaît comme il est venu… en silence.",
+     "en": "Falcon vanishes the way he came… in silence."
+    }
+   ]
+  },
+  {
+   "id": "o2",
+   "src": "cine_sniper",
+   "from": 56,
+   "to": 66,
+   "music": "resolve",
+   "end": true,
+   "lines": [
+    {
+     "id": "n52",
+     "at": 0.4,
+     "fr": "Opération Éclipse, c'est mon jeu. Si tu veux y jouer, écris Faucon en commentaire, et dis-moi quelle mission tu veux voir ensuite.",
+     "en": "Operation Eclipse is my game. If you want to play it, comment Falcon, and tell me which mission you want to see next."
+    }
+   ]
+  }
+ ]
 }

@@ -44,7 +44,7 @@ def tval(v, src):
 segs, T0 = [], 0.0
 for s in film["segments"]:
     s = dict(s); s["T"] = T0
-    if "card" in s:
+    if "card" in s or "still" in s or "compare" in s:
         s["dur"] = s["d"]
     else:
         info = src_info(s["src"]); w = info["meta"]["windows"][0]; fps_s = info["meta"]["fps"]
@@ -60,7 +60,7 @@ print(f"{len(segs)} séquences · durée {DUR / 60:.1f} min")
 
 def to_video(s, t_game):
     """Temps de jeu → temps dans la vidéo (None si hors du plan)."""
-    if "card" in s or not (s["a"] <= t_game < s["b"]): return None
+    if "src" not in s or not (s["a"] <= t_game < s["b"]): return None
     return s["T"] + (t_game - s["a"]) / s["speed"]
 
 
@@ -71,15 +71,27 @@ if step == "video":
         out = os.path.join(work, f"c{i:03d}.mp4"); clips.append(out)
         if os.path.exists(out): continue
         post = "hqdn3d=2:1.5:4:4,scale=1920:1080:flags=lanczos,unsharp=5:5:0.5,eq=contrast=1.05:saturation=1.08,vignette=PI/5,format=yuv420p"
+        nfr = int(round(s["dur"] * FPS))
         if "card" in s:
             cmd = ["ffmpeg", "-y", "-v", "error", "-f", "lavfi", "-i", f"color=c=0x07090c:s=1920x1080:r={FPS}:d={s['dur']}", "-vf", "format=yuv420p"]
+        elif "still" in s:  # photo de surveillance ou carte tactique, zoom lent
+            img = os.path.join(B, "stills", s["still"] + ".jpg")
+            look = "eq=gamma=1.6:saturation=0.55:contrast=1.1,colorbalance=bs=.12:gs=.04,drawgrid=w=96:h=96:t=1:c=white@0.10" if s.get("map") else "eq=saturation=0.4:contrast=1.15,colorbalance=rs=-.05:gs=.06:bs=.02,noise=alls=10:allf=t"
+            cmd = ["ffmpeg", "-y", "-v", "error", "-loop", "1", "-i", img, "-vf",
+                   f"scale=3840:2160,zoompan=z='1+0.0009*on':d={nfr}:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s=1920x1080:fps={FPS},{look},vignette=PI/4,format=yuv420p", "-frames:v", str(nfr)]
+        elif "compare" in s:  # avant / maintenant côte à côte
+            c = s["compare"]; L = os.path.join(B, c["left"], "%05d.jpg"); R = os.path.join(B, c["right"], "%05d.jpg")
+            cmd = ["ffmpeg", "-y", "-v", "error", "-framerate", str(c["left_fps"]), "-start_number", str(int(c["left_from"] * c["left_fps"]) + 1), "-i", L,
+                   "-framerate", str(c["right_fps"]), "-start_number", str(int(c["right_from"] * c["right_fps"]) + 1), "-i", R,
+                   "-f", "lavfi", "-i", f"color=c=0x07090c:s=1920x1080:r={FPS}:d={s['dur']}",
+                   "-filter_complex", f"[0:v]scale=-2:1000,fps={FPS}[l];[1:v]hqdn3d=2:1.5:4:4,scale=-2:1000,fps={FPS}[r];[2:v][l]overlay=x=330:y=60:shortest=1[a];[a][r]overlay=x=1028:y=60:shortest=1,format=yuv420p", "-frames:v", str(nfr)]
         else:
             frames = os.path.join(B, s["src"], "w0", "%05d.jpg")
             vf = []
             if s["speed"] != 1.0: vf.append(f"setpts=PTS/{s['speed']}")
             if s["fps_s"] != FPS or s["speed"] != 1.0: vf.append(f"minterpolate=fps={FPS}:mi_mode=blend")
             vf.append(post)
-            cmd = ["ffmpeg", "-y", "-v", "error", "-framerate", str(s["fps_s"]), "-start_number", str(s["f0"]), "-i", frames, "-frames:v", str(int(round(s["dur"] * FPS))), "-vf", ",".join(vf), "-r", str(FPS)]
+            cmd = ["ffmpeg", "-y", "-v", "error", "-framerate", str(s["fps_s"]), "-start_number", str(s["f0"]), "-i", frames, "-frames:v", str(nfr), "-vf", ",".join(vf), "-r", str(FPS)]
         subprocess.run(cmd + ["-c:v", "libx264", "-preset", "veryfast", "-crf", "15", "-an", out], check=True)
         print(f"plan {i + 1}/{len(segs)} {s['id']} ({s['dur']:.1f} s)", flush=True)
     with open(os.path.join(work, "list.txt"), "w") as f:
@@ -150,6 +162,18 @@ for s in segs:
         t1, t2 = ("OPÉRATION", "ÉCLIPSE") if lang == "fr" else ("OPERATION", "ECLIPSE")
         subs.append(f"Dialogue: 2,{T.ts(s['T'] + 3.2)},{T.ts(s['T'] + s['dur'])},CardT,,0,0,0,,{{\\pos(960,470)\\fad(500,300)}}{t1}")
         subs.append(f"Dialogue: 2,{T.ts(s['T'] + 3.4)},{T.ts(s['T'] + s['dur'])},CardTO,,0,0,0,,{{\\pos(960,610)\\fad(500,300)}}{t2}")
+    if "still" in s:
+        lab = s["label"][lang]
+        if s.get("map"):
+            subs.append(f"Dialogue: 2,{T.ts(s['T'] + .2)},{T.ts(s['T'] + s['dur'] - .1)},CapK,,0,0,0,,{{\\pos(110,90)\\fad(300,300)}}{'CARTE TACTIQUE' if lang == 'fr' else 'TACTICAL MAP'}")
+            subs.append(f"Dialogue: 2,{T.ts(s['T'] + .4)},{T.ts(s['T'] + s['dur'] - .1)},MapLabel,,0,0,0,,{{\\pos(110,130)\\fad(300,300)}}{lab}")
+        else:
+            subs.append(f"Dialogue: 2,{T.ts(s['T'] + .2)},{T.ts(s['T'] + s['dur'] - .1)},CapK,,0,0,0,,{{\\pos(110,820)\\fad(300,300)}}{'DOSSIER CLASSIFIÉ' if lang == 'fr' else 'CLASSIFIED FILE'}")
+            subs.append(f"Dialogue: 2,{T.ts(s['T'] + .4)},{T.ts(s['T'] + s['dur'] - .1)},MapLabel,,0,0,0,,{{\\pos(110,860)\\fad(300,300)}}{lab}")
+    if "compare" in s:
+        l1, l2 = s["labels"][lang]
+        subs.append(f"Dialogue: 2,{T.ts(s['T'] + .2)},{T.ts(s['T'] + s['dur'])},CapK,,0,0,0,,{{\\an8\\pos(634,1010)\\fad(300,0)}}{l1}")
+        subs.append(f"Dialogue: 2,{T.ts(s['T'] + .2)},{T.ts(s['T'] + s['dur'])},CapK,,0,0,0,,{{\\an8\\pos(1332,1010)\\fad(300,0)}}{l2}")
     if s.get("replay"):
         subs.append(f"Dialogue: 2,{T.ts(s['T'] + .1)},{T.ts(s['T'] + s['dur'] - .1)},Replay,,0,0,0,,{{\\pos(1820,70)\\fad(200,200)}}{{\\c{T.RED}}}●{{\\c{T.WHITE}}} {'RALENTI' if lang == 'fr' else 'REPLAY'}")
     if s.get("end"):
@@ -175,7 +199,7 @@ for s in segs:
                 who, text = txt; subs.append(f"Dialogue: 2,{T.ts(t)},{T.ts(end)},Radio,,0,0,0,,{{\\pos(80,160)\\fad(150,200)}}{{\\c{T.ORANGE}}}{who}  {{\\c{T.WHITE}}}{text}")
 
 styles = """Style: Sub,Anton,50,&H00FFFFFF,&H00FFFFFF,&H00000000,&H90000000,0,0,0,0,100,100,1,0,1,4,2,2,120,120,64,1
-Style: Radio,Anton,34,&H00FFFFFF,&H00FFFFFF,&H00000000,&HB0000000,0,0,0,0,100,100,1,0,3,10,0,7,80,700,40,1
+Style: Radio,Anton,40,&H00FFFFFF,&H00FFFFFF,&H00000000,&HB0000000,0,0,0,0,100,100,1,0,3,10,0,7,80,700,40,1
 Style: Stamp,Saira Stencil One,62,&H001F8AFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,0,0,1,5,3,5,40,40,0,1
 Style: Alarm,Saira Stencil One,44,&H003B3BFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,0,0,1,5,2,5,40,40,0,1
 Style: Floor,Saira Stencil One,56,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,0,0,1,5,2,5,40,40,0,1
@@ -185,6 +209,7 @@ Style: CapP,Anton,32,&H008AB4C8,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100
 Style: CardK,Anton,40,&H001F8AFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,8,0,1,0,0,5,0,0,0,1
 Style: CardT,Saira Stencil One,130,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,0,0,1,0,4,5,0,0,0,1
 Style: CardTO,Saira Stencil One,130,&H001F8AFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,0,0,1,0,4,5,0,0,0,1
+Style: MapLabel,Anton,46,&H00FFFFFF,&H00FFFFFF,&H00000000,&HA0000000,0,0,0,0,100,100,3,0,3,14,0,4,0,0,0,1
 Style: Replay,Anton,34,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,4,0,1,3,0,9,0,0,0,1
 Style: Shade,Arial,20,&H00000000,&H00000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,7,0,0,0,1
 Style: CTA,Anton,64,&H00000B16,&H00FFFFFF,&H001F8AFF,&H00000000,0,0,0,0,100,100,1,0,3,20,0,5,40,40,0,1"""

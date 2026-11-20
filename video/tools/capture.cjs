@@ -9,7 +9,7 @@ const path = require('path');
 
 const out = process.argv[2] || 'build';
 const fps = +(process.argv[3] || 30);
-const url = (process.argv[4] || 'http://127.0.0.1:8765/game/index.html') + '?capture=1&clean=1';
+const url = (process.argv[4] || 'http://127.0.0.1:8765/game/v1-prototype.html') + '?capture=1&clean=1';
 
 (async () => {
   fs.mkdirSync(path.join(out, 'frames'), { recursive: true });
