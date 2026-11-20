@@ -27,6 +27,8 @@ cache = {}
 def src_info(src):
     if src not in cache:
         d = os.path.join(B, src)
+        if not os.path.exists(os.path.join(d, "meta.json")):  # plans cinéma pas encore tournés : 12 i/s depuis 0
+            return {"meta": {"fps": 12, "windows": [{"start": 0, "duration": 1e9}]}, "marks": {}, "events": [], "missing": True}
         cache[src] = {"meta": json.load(open(os.path.join(d, "meta.json"))), "marks": json.load(open(os.path.join(d, "marks.json"))), "events": json.load(open(os.path.join(d, "events.json")))}
     return cache[src]
 
@@ -67,9 +69,11 @@ def to_video(s, t_game):
 # ---------------------------------------------------- étape 1 : images
 if step == "video":
     clips = []
+    missing = False
     for i, s in enumerate(segs):
         out = os.path.join(work, f"c{i:03d}.mp4"); clips.append(out)
         if os.path.exists(out): continue
+        if "src" in s and src_info(s["src"]).get("missing"): missing = True; continue
         post = "hqdn3d=2:1.5:4:4,scale=1920:1080:flags=lanczos,unsharp=5:5:0.5,eq=contrast=1.05:saturation=1.08,vignette=PI/5,format=yuv420p"
         nfr = int(round(s["dur"] * FPS))
         if "card" in s:
@@ -94,6 +98,7 @@ if step == "video":
             cmd = ["ffmpeg", "-y", "-v", "error", "-framerate", str(s["fps_s"]), "-start_number", str(s["f0"]), "-i", frames, "-frames:v", str(nfr), "-vf", ",".join(vf), "-r", str(FPS)]
         subprocess.run(cmd + ["-c:v", "libx264", "-preset", "veryfast", "-crf", "15", "-an", out], check=True)
         print(f"plan {i + 1}/{len(segs)} {s['id']} ({s['dur']:.1f} s)", flush=True)
+    if missing: print("plans manquants : relancer quand tout est tourné"); sys.exit(0)
     with open(os.path.join(work, "list.txt"), "w") as f:
         for c in clips: f.write(f"file '{os.path.abspath(c)}'\n")
     subprocess.run(["ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0", "-i", os.path.join(work, "list.txt"), "-c", "copy", os.path.join(work, "master.mp4")], check=True)
@@ -152,8 +157,10 @@ for s in segs:
         path = os.path.join(vdir, line["id"] + ".mp3")
         S.add(voice, S.load_mp3(path), t)
         words = T.words_of(os.path.join(vdir, line["id"] + ".json"))
-        for g in T.chunks(words, 8, 46):
+        gs = T.chunks(words, 8, 46)
+        for k, g in enumerate(gs):
             a0, a1 = t + g[0][1], t + g[-1][2] + .25
+            if k + 1 < len(gs): a1 = min(a1, t + gs[k + 1][0][1] - .02)
             subs.append(f"Dialogue: 1,{T.ts(a0)},{T.ts(a1)},Sub,,0,0,0,,{' '.join(w[0] for w in g)}")
     if "card" in s:
         c = s["card"]; subs.append(f"Dialogue: 2,{T.ts(s['T'] + .2)},{T.ts(s['T'] + s['dur'] - .2)},CardK,,0,0,0,,{{\\pos(960,450)\\fad(300,300)}}{c['k']}")
